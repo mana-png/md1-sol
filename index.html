@@ -23,19 +23,9 @@
              <button class="btn btn-default" ng-click="showMessage()">Check If Too Much</button>
          </div>
          <div class="form-group message">
-           <!-- Your message can go here. -->
            {{message}}
             <div ng-show="totalItems">The number of items are {{totalItems}}</div>
          </div>
    </div>
-    <footer class="panel-footer">
-      Note:  empty items like the following does not take into account
-      <br>
-      <ul class="list-group">
-        <li class="list-group-item">',,'</li>
-        <li class="list-group-item">', ,'</li>
-      </ul>
-       
-    </footer>
 </body> 
 </html>
