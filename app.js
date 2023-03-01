@@ -1,17 +1,16 @@
 (function() {
-'use strict';
-    angular.module(LunchCheck,[])
+	'use strict';
+	angular.module('LunchCheck', [])
+	.controller('LunchCheckController', LunchCheckController);
 
-    .controller('lunchController',LunchController);
-
-    LunchController.$inject=['$scope'];
-    function LunchController($scope){
-        $scope.message="";
+	LunchCheckController.$inject= ['$scope'];
+	function LunchCheckController($scope) {
+		$scope.message="";
 		$scope.items="";
 		$scope.totalItems=0;
 		$scope.color="";
 
-        //function to count the number of items in textbox
+		// function that count the number of items in the input
 		$scope.countItems= function(message) {
 			//, , is not an item
 			console.log("message "+message)
@@ -25,8 +24,7 @@
 			}
 			return count;
 		};
-
-        //function that shows a message depending on the number of items
+		//function that shows a message depending on the number of items
 		$scope.showMessage= function() {
 			$scope.totalItems= $scope.countItems($scope.items)
 			$scope.setData($scope.totalItems);
@@ -39,6 +37,29 @@
 			else
 				$scope.message="Too much!"
 		};
-    }
+		// function that set style data depending on the number of items
+		$scope.setData=function (numberOfItems) {
+			if(numberOfItems===0)
+				{
+					$scope.messageStyle.color="red";
+					$scope.input={
+						"border-color": "red"
+					};
+				}
+			else
+				{
+					$scope.messageStyle.color="green";
+					$scope.input={
+						"border-color": "green"
+					};
+				}
+		}
+		$scope.input={
+			"border": ""
+		}
+		$scope.messageStyle={
+			"color": ""
+		}
+	};
 
 })();
